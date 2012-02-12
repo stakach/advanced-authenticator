@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= Login.title %></title>
+
+		<!--
+			CSS
+		-->
+		<%= stylesheet_link_tag params[:controller] %>
+		
+		<!--
+			Javascripts
+		-->
+		<%= javascript_include_tag params[:controller] %>
+	</head>
+	
+	<body>
+		<div id="admin_box">
+			<h1><%= t(:login) %></h1>
+			<div>
+				<% if !flash[:notice].nil? %>
+					<div class="alert-message warning">
+						<p><%= flash[:notice] %></p>
+					</div>
+				<% end %>
+				
+				<%= yield %>
+			</div>
+		</div>
+	</body>
+</html>
