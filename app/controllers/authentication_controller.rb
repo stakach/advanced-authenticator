@@ -98,8 +98,6 @@ class AuthenticationController < ActionController::Base	# Base to seperate from 
 			#
 			reset_session
 			session[:user] = @user.id
-			session[:name] = "#{@user.firstname} #{@user.lastname}".strip
-			session[:name] = "#{@user.identifier}" if session[:name].empty?
 		end
 	end
 	
