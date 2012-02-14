@@ -23,8 +23,8 @@ module Login
 	end
 	
 	def self.ug_mixin(&block)
-		@group_mixin = block if block
-		@group_mixin
+		@ug_mixin = block if block
+		@ug_mixin
 	end
 	
 	@@title = ""
