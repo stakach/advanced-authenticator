@@ -1,4 +1,5 @@
 class AuthSourceLocal < AuthSource
+	validates_presence_of :name
 	
 	def authenticate(login, password)
 		return nil if login.blank? || password.blank?
