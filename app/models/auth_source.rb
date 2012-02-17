@@ -17,6 +17,7 @@ class AuthSource < ActiveRecord::Base
 	
 	
 	AUTH_TYPES = [["LDAP Authentication", AuthSourceLdap],["Local Database", AuthSourceLocal]]
+	attr_accessor :auth_type
 	
 	
 	def self.search(search_terms = nil)
@@ -52,7 +53,7 @@ class AuthSource < ActiveRecord::Base
 			self[:encrypted_password] = Encryptor.decrypt(Base64.decode64(self[:encrypted_password]), {:key => 'dcJD9eSRqYwxxPHK4g6ASIyiDsM=', :algorithm => 'aes-256-cbc'})
 		end
 		
-		#self[:auth_type] = self[:type]
+		@auth_type = self[:type]
 	end
 	
 	def encrypt_password
@@ -62,6 +63,6 @@ class AuthSource < ActiveRecord::Base
 			self[:encrypted_password] = Base64.encode64(Encryptor.encrypt(self[:encrypted_password], {:key => 'dcJD9eSRqYwxxPHK4g6ASIyiDsM=', :algorithm => 'aes-256-cbc'}))
 		end
 		
-		#self[:type] = self[:auth_type]
+		self[:type] = @auth_type
 	end
 end
