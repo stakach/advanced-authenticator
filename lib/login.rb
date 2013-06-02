@@ -1,13 +1,6 @@
 require "login/engine"
 require "security_transgression"
 
-require "models/auth_source.rb"
-require "models/auth_source_ldap.rb"
-require "models/auth_source_local.rb"
-require "models/group.rb"
-require "models/user.rb"
-require "models/user_group.rb"
-
 module Login
 	
 	def self.redirection(&block)
@@ -38,3 +31,11 @@ module Login
 	mattr_accessor :title
 	
 end
+
+require "models/auth_source.rb"
+require "models/auth_source_ldap.rb"
+require "models/auth_source_local.rb"
+require "models/group.rb"
+require "models/user.rb"
+require "models/user_group.rb"
+
