@@ -28,6 +28,8 @@ class AuthSourceLdap < AuthSource
 	
 	before_validation :strip_ldap_attributes
 	after_initialize :set_port
+
+	AUTH_TYPES.push(["LDAP Authentication", AuthSourceLdap])
 	
 	
 	#attr_encrypted :password, :key => 'aca secret key:dcJD9eSRqYwxxPHK4g6ASIyiDsM=', :algorithm => 'aes-256-ecb'

@@ -16,7 +16,7 @@ class AuthSource < ActiveRecord::Base
 	
 	
 	
-	AUTH_TYPES = [["LDAP Authentication", AuthSourceLdap],["Local Database", AuthSourceLocal]]
+	AUTH_TYPES = []
 	attr_accessor :auth_type
 	
 	

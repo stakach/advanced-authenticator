@@ -1,5 +1,7 @@
 class AuthSourceLocal < AuthSource
 	validates_presence_of :name
+
+	AUTH_TYPES.push(["Local Database", AuthSourceLocal])
 	
 	def authenticate(login, password)
 		return nil if login.blank? || password.blank?
