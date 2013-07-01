@@ -1,5 +1,5 @@
 class AuthenticationController < ActionController::Base	# Base to seperate from application controller
-	protect_from_forgery, :except => :login
+	
 	
 	layout 'login'
 	
