@@ -1,5 +1,5 @@
 class AuthenticationController < ActionController::Base	# Base to seperate from application controller
-	protect_from_forgery
+	protect_from_forgery, :except => :login
 	
 	layout 'login'
 	
@@ -14,12 +14,18 @@ class AuthenticationController < ActionController::Base	# Base to seperate from 
 	def login
 		authenticate
 		
-		if @user.nil?
-			flash[:notice] = t(:login_error)
-			render :action => 'start'
+		if request.xhr?
+			if @user.nil?
+				flash[:notice] = t(:login_error)
+				render :action => 'start'
+			else
+				#Perform redirect (application defined)
+				login_success
+			end
+		elsif @user.nil?
+			render :nothing => true, :status => :unauthorized
 		else
-			#Perform redirect (application defined)
-			login_success
+			render :nothing => true
 		end
 	end
 	
