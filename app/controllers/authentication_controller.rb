@@ -14,7 +14,7 @@ class AuthenticationController < ActionController::Base	# Base to seperate from 
 	def login
 		authenticate
 		
-		if request.xhr?
+		if !request.xhr?
 			if @user.nil?
 				flash[:notice] = t(:login_error)
 				render :action => 'start'
